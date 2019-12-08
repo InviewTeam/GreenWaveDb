@@ -37,7 +37,7 @@ class LightsInfo(db.Model):
         }
 
 def init_db():
-    db.drop_all()
+    # db.drop_all()
     db.create_all()
 
 if __name__ == '__main__':

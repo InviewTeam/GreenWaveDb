@@ -1,5 +1,6 @@
 import os
 import json
+import datetime
 from flask import Flask, Response, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv, find_dotenv
@@ -28,8 +29,10 @@ with app.app_context():
 
 @app.route('/get/bytime/', methods=['GET'])
 def get_records_by_time():
-    records = LightsInfo.query.all()
-    return jsonify({'error': None}), 200
+    date_from = datetime.datetime.strptime(request.args.get('from'), '%Y-%m-%d %H:%M:%S')
+    date_to = datetime.datetime.strptime(request.args.get('to'), '%Y-%m-%d %H:%M:%S')
+    records = db.session.query(LightsInfo).filter(LightsInfo.date >= date_from, LightsInfo.date <= date_to)
+    return jsonify({'error': None, 'records': [record.serialize() for record in records]}), 200
 
 @app.route('/get/all/', methods=['GET'])
 def get_all():

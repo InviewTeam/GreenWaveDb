@@ -41,11 +41,11 @@ def get_all():
 
 @app.route('/add/record', methods=['POST'])
 def add_record():
-    light_id = str(request.form.get('light_id'))
-    interval = str(request.form.get('interval'))
-    date = str(request.form.get('date'))
-    success_counter = str(request.form.get('success_counter'))
-    fail_counter = str(request.form.get('fail_counter'))
+    light_id = str(request.json.get('light_id'))
+    interval = str(request.json.get('interval'))
+    date = str(request.json.get('date'))
+    success_counter = str(request.json.get('success_counter'))
+    fail_counter = str(request.json.get('fail_counter'))
 
 
     lights_request = LightsInfo(light_id, interval, date, success_counter, fail_counter)

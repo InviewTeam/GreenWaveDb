@@ -55,7 +55,7 @@ toolz==0.10.0
 tox==3.14.1
 tronapi==3.1.5
 trx-utils==1.0.4
-urllib3==1.25.7
+urllib3==1.26.5
 virtualenv==16.7.7
 Werkzeug==0.16.0
 zipp==0.6.0
